@@ -1,3 +1,2 @@
-"db":"mongodb+srv://asad:1410@cluster0.wrbiuck.mongodb.net/"
 
 "db":"mongodb://localhost/Products"
