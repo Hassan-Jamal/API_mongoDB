@@ -1,53 +1,48 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Product Management</title>
-
-    <link rel="stylesheet" href="./Front-End/style.css">
-    <link rel="shortcut icon" href="./public/images/favicon.png" type="image/x-icon">
-
+    <style>
+        /* Add your CSS styles here */
+        .product {
+            border: 1px solid #ccc;
+            margin: 10px;
+            padding: 10px;
+        }
+        #editForm {
+            display: none;
+            /* Add additional styles for the edit form if needed */
+        }
+        .overlay {
+            display: none;
+            /* Add styles for the overlay if needed */
+        }
+    </style>
 </head>
-
 <body>
-
     <h1>Product Management</h1>
-
-    <div class="input-box">
-        <h2>Add New Product</h2>
-
+    
+    <div>
         <label for="title">Title:</label>
-        <input type="text" id="title" placeholder="Enter Name of the Product..." spellcheck required>
-        <br>
-        <label for="model">Model:</label>
-        <input type="text" id="model" placeholder="Enter Model..." spellcheck required>
-        <br>
+        <input type="text" id="title" placeholder="Product Title">
         <label for="price">Price:</label>
-        <input type="number" id="price" placeholder="Enter Price for the Product">
-        <br>
-        <button class="submit-button" onclick="addProduct()">Add Product</button>
+        <input type="text" id="price" placeholder="Product Price">
+        <button onclick="addProduct()">Add Product</button>
     </div>
 
-    <div id="products">
+    <div id="products"></div>
 
+    <div id="editForm">
+        <label for="editTitle">Edit Title:</label>
+        <input type="text" id="editTitle">
+        <label for="editPrice">Edit Price:</label>
+        <input type="text" id="editPrice">
+        <button onclick="submitEditForm()">Save Changes</button>
+        <button onclick="closeEditForm()">Cancel</button>
     </div>
 
-    <div id="editForm" class="edit-form input-box" data-id="">
-        <h2>Edit Product</h2>
-        <label for="editTitle">Title:</label>
-        <input type="text" id="editTitle" required>
-        <label for="editModel">Model:</label>
-        <input type="text" id="editModel" required>
-        <label for="editPrice">Price:</label>
-        <input type="text" id="editPrice" required>
-        <button onclick="submitEditForm()" class="save-btn">Save</button>
-        <button onclick="closeEditForm()" class="cancel-btn">Cancel</button>
-    </div>
-
-    <script src="./index.js"></script>
-
+    <script src="./script.js"></script>
 </body>
-
 </html>

@@ -1,7 +1,6 @@
-document.addEventListener("DOMContentLoaded", fetchProducts);
-let API_URL = "http://localhost:3001/api/products";
+        const API_URL = "http://localhost:3030/api/products";
 
-async function fetchProducts() {
+        async function fetchProducts() {
     try {
         const response = await fetch(API_URL);
         const products = await response.json();
@@ -10,7 +9,6 @@ async function fetchProducts() {
             productCardsHTML += `
             <div class="product" data-id="${product._id}">
             <h3>Name: ${product.title}</h3>
-            <p>Model: ${product.Model}</p>
             <p>Price: ${product.price}</p>
             <button onclick="handleDelete(this)">Delete</button>
             <button onclick="openEditForm(); handleUpdate(this)">Edit</button>
@@ -25,13 +23,11 @@ async function fetchProducts() {
 
 function addProduct() {
     let title = document.getElementById('title').value;
-    let Model = document.getElementById('model').value;
     let price = document.getElementById('price').value;
-    if (!title || !Model || !price) return alert('All fields are required');
+    if (!title|| !price) return alert('All fields are required');
 
     let product = {
         title,
-        Model,
         price
     };
     fetch(API_URL, {
@@ -44,7 +40,6 @@ function addProduct() {
         .then(response => response.json())
         .then(data => {
             document.getElementById('title').value = '';
-            document.getElementById('model').value = '';
             document.getElementById('price').value = '';
             fetchProducts();
         })
@@ -91,7 +86,6 @@ async function handleUpdate(element) {
     const response = await fetch(`${API_URL}/${id}`);
     const product = await response.json();
     document.getElementById('editTitle').value = product.title;
-    document.getElementById('editModel').value = product.Model;
     document.getElementById('editPrice').value = product.price;
 
     openEditForm();
@@ -101,17 +95,15 @@ async function handleUpdate(element) {
 function submitEditForm() {
     let id = document.getElementById('editForm').getAttribute('data-id');
     let title = document.getElementById('editTitle').value;
-    let Model = document.getElementById('editModel').value;
     let price = document.getElementById('editPrice').value;
 
-    if (!title || !Model || !price) {
+    if (!title || !price) {
         alert('All fields are required');
         return;
     }
 
     let product = {
         title,
-        Model,
         price
     };
 
@@ -143,3 +135,6 @@ function closeEditForm() {
 }
 
 document.body.innerHTML += '<div id="overlay" class="overlay"></div>';
+
+        document.body.innerHTML += '<div id="overlay" class="overlay"></div>';
+    

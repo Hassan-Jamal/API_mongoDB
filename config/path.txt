@@ -1,2 +1,2 @@
 
-"db":"mongodb://localhost/Products"
+"db":"mongodb+srv://sp22bse044:hassan@cluster0.0b3zr8v.mongodb.net/?retryWrites=true&w=majority"  
