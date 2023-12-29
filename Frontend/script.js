@@ -1,5 +1,5 @@
-urlg = "https://mongo-api-assignment-st35.vercel.app/players";
-function getScores() {
+urlg = "http://localhost:3006/products";
+function getprice() {
   fetch(urlg, {
     method: "GET",
     headers: {
@@ -15,8 +15,8 @@ function getScores() {
     .then((data) => {
       const sc = document.getElementById("table");
       sc.innerHTML = `<tr>
-                                <td class = "bold">Name</td>
-                                <td class = "bold">Score</td>
+                                <td class = "bold">Title</td>
+                                <td class = "bold">price</td>
                                 <td>Operation</td>
                             </tr>`;
       data.forEach((element) => {
@@ -27,8 +27,8 @@ function getScores() {
         const td3 = document.createElement("td");
         const delbtn = document.createElement("button");
         const editbtn = document.createElement("button");
-        td1.innerHTML = element.Name;
-        td2.innerHTML = element.scores;
+        td1.innerHTML = element.title;
+        td2.innerHTML = element.price;
         tr.elementId = element._id;
         tr.appendChild(td1);
         tr.appendChild(td2);
@@ -45,19 +45,19 @@ function getScores() {
               "Content-Type": "application/json; charset=UTF-8",
             },
           });
-          getScores();
+          getprice();
         }); 
         editbtn.addEventListener("click", () => {
           const div = document.createElement("div");
           div.className = "add"
-          const name = document.createElement("input");
-          const score = document.createElement("input");
+          const title = document.createElement("input");
+          const price = document.createElement("input");
           const btn = document.createElement("button");
-          name.value = element.Name;
-          score.value = element.scores;
+          title.value = element.title;
+          price.value = element.price;
           btn.innerHTML = "Update";
-          div.appendChild(name);
-          div.appendChild(score); 
+          div.appendChild(title);
+          div.appendChild(price); 
           div.appendChild(btn);
           document.getElementById("inputf").appendChild(div);
           btn.addEventListener("click", () => {
@@ -66,13 +66,13 @@ function getScores() {
               headers: {
                 "Content-Type": "application/json; charset=UTF-8",
               },
-              body: JSON.stringify({ Name: name.value, scores: score.value }),
+              body: JSON.stringify({ title: title.value, price: price.value }),
               success: function(){
                 alert("Data Updated Sucessfully")
               }
       
             });
-            getScores();
+            getprice();
             div.remove();
           });
         });
@@ -82,15 +82,15 @@ function getScores() {
 }
 
 document.getElementById("post").addEventListener("click", () => {
-  const name = document.getElementById("name").value;
-  const score = document.getElementById("score").value;
+  const title = document.getElementById("title").value;
+  const price = document.getElementById("price").value;
 
   fetch(urlg, {
     method: "POST",
     headers: {
       "Content-Type": "application/json; charset=UTF-8",
     },
-    body: JSON.stringify({ Name: name, scores: score }),
+    body: JSON.stringify({ title: title, price: price }),
     success: function (data) {
       alert("Record Entered Sucessfully")
     },
@@ -98,8 +98,8 @@ document.getElementById("post").addEventListener("click", () => {
       alert(error)
     },
   });
-  document.getElementById("name").value = "";
-  document.getElementById("score").value = "";
-  getScores();
+  document.getElementById("title").value = "";
+  document.getElementById("price").value = "";
+  getprice();
 });
-getScores();
+getprice();

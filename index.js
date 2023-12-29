@@ -14,7 +14,7 @@ const {
 app.use(express.json());
 
 mongoose
-  .connect(`mongodb+srv://romaanali:AxAtBN1HhalQmRAQ@cluster0.garqbav.mongodb.net/?retryWrites=true&w=majority`, {
+  .connect(`mongodb+srv://hassanjamal6577987:<password>@cluster0.ysawrah.mongodb.net/?retryWrites=true&w=majority`, {
     useNewUrlParser: true,
     useUnifiedTopology: true,
   })

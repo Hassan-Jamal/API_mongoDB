@@ -1,33 +1,33 @@
-const PlayerModel = require("./models/model");
-const createPlayer = async (Name, scores) => {
+const productModel = require("./models/model");
+const createproduct = async (title, price) => {
   console.log("Create Product");
-  let players = new PlayerModel();
-  players.Name = Name;
-  players.scores = scores;
-  await players.save();
-  return players;
+  let product = new productModel();
+  product.title = title;
+  product.price = price;
+  await product.save();
+  return product;
 };
-const updatePlayer = async (_id, Name,scores) => {
-  let players = await PlayerModel.findById(_id);
-  players.Name = Name;
-  players.scores = scores;
-  await players.save();
-  return players;
+const updateproduct = async (_id, title,price) => {
+  let product = await productModel.findById(_id);
+  product.title = title;
+  product.price = price;
+  await product.save();
+  return product;
 };
-const getAllPlayer = async () => {
-  let players = await PlayerModel.find();
-  return players;
+const getAllproduct = async () => {
+  let product = await productModel.find();
+  return product;
 };
-const deletePlayer = async (_id) => {
-  let players = await PlayerModel.findByIdAndDelete(_id);
-  return players;
+const deleteproduct= async (_id) => {
+  let product = await productModel.findByIdAndDelete(_id);
+  return product;
 };
-const getPlayerById = async (_id) => {
-  let players = await PlayerModel.findById(_id);
-  return players;
+const getproductById = async (_id) => {
+  let product = await productModel.findById(_id);
+  return product;
 };
-module.exports.createPlayer = createPlayer;
-module.exports.getAllPlayer = getAllPlayer;
-module.exports.deletePlayer = deletePlayer;
-module.exports.updatePlayer = updatePlayer;
-module.exports.getPlayerById = getPlayerById;
+module.exports.createproduct= createproduct;
+module.exports.getAllproduct= getAllproduct;
+module.exports.deleteproduct= deleteproduct;
+module.exports.updateproduct = updateproduct;
+module.exports.getproductById = getproductById;
