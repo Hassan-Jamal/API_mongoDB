@@ -1,6 +1,6 @@
 const mongoose = require("mongoose");
 
-const playerSchema = mongoose.Schema({
+const productSchema = mongoose.Schema({
   Name: String,
   scores: Number,
   slug: {
@@ -8,5 +8,5 @@ const playerSchema = mongoose.Schema({
     lowercase: true,
   },
 });
-const PlayerModel = mongoose.model("Player", playerSchema);
-module.exports = PlayerModel;
+const productModel = mongoose.model("product", productSchema);
+module.exports = productModel;
